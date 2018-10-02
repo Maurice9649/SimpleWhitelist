@@ -70,7 +70,7 @@ local SID = ""
 					Results[1]:changeTeam(GAMEMODE.DefaultTeam,true)
 				end
 			else
-				return "Cannot Remove to WL, Found:"..table.Count(Results).." Targets"
+				return "Cannot remove from whitelist, Found:"..table.Count(Results).." Targets"
 			end
 		else 
 			return "Team has no WL"	
@@ -93,7 +93,7 @@ if args[1] and args[2] then
  SWhitelist[args[1]][SID]	 = true
  wl_save() 
  else
- return "Cannot Add to WL, Found:"..table.Count(Results).." Targets"
+ return "Cannot add to whitelist, found:"..table.Count(Results).." Targets"
  end
  else 
  return "Team has no WL - use wl_add before"	
@@ -106,7 +106,7 @@ function wl_adduserid(ply,cmd,args)
 	if  SWhitelist[args[1]] then
 	SWhitelist[args[2]] = true
 	else
-	return "Cannot Add , no WL"
+	return "Cannot add, job has no whitelist"
 	end
  else
  return "Invalid Amount of arguments given , wl_adduserid teamName SteamID"
@@ -119,7 +119,7 @@ function wl_removeuserid(ply,cmd,args)
 	if  SWhitelist[args[1]] then
 	SWhitelist[args[2]] = nil
 	else
-	return "Cannot Remove , no WL"
+	return "Cannot remove, player has no whitelist "
 	end
  else
  return "Invalid Amount of arguments given , wl_removeuserid teamName SteamID"
