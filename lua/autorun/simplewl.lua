@@ -1,19 +1,20 @@
-timer.Simple(1,function() 
 local Dir = "SimpleWhiteList"
 local RJMsg = "You are not Whitelisted to this Job!"
-local addwljob = function(ply) return ply:IsSuperAdmin() end -- add and rm whitelists
-local addwl = function(ply) return ply:IsAdmin() end -- and and rm users too/from whitelists
-if ULib then
-addwl = function(ply)
-for k , v in pairs(SWAdmins) do
-if ply:CheckGroup(k) then return true end
+timer.Simple(1,function() 
+	local addwljob = function(ply) return ply:IsSuperAdmin() end -- add and rm whitelists
+	local addwl = function(ply) return ply:IsAdmin() end -- and and rm users too/from whitelists
+	if ULib then
+		addwl = function(ply)
+		for k , v in pairs(SWAdmins) do
+			if ply:CheckGroup(k) then return true end
+		end
+	end
 end
-end
-end
+
 if CAMI then
-print("Cami Supported .. Setting up Perms")
-CAMI.RegisterPrivilege({Name = "Whitelist_Edit",MinAccess = "admin"})
-CAMI.RegisterPrivilege({Name = "Whitelist_ManageJobs",MinAccess = "superadmin"})
+	print("Cami Supported .. Setting up Perms")
+	CAMI.RegisterPrivilege({Name = "Whitelist_Edit",MinAccess = "admin"})
+	CAMI.RegisterPrivilege({Name = "Whitelist_ManageJobs",MinAccess = "superadmin"})
 end
 
 
